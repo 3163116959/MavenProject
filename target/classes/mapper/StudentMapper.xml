@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- 接口名字 -->
+ <mapper namespace="mapper.StudentMapper">
+ 	<!-- 查询全部 -->
+ 	<select id="queryAll" resultType="Student">
+ 		select * from student
+ 	</select>
+ 	
+ 	<!-- 根据学号查 -->
+ 	<select id="queryByStuId" parameterType="String" resultType="Student">
+ 		select * from student where stuId=#{stuId}
+ 	</select>
+ 	
+ 	<!-- 根据班级查询 -->
+ 	<select id="queryByClassName" parameterType="String" resultType="Student">
+ 		select * from student where className=#{className}
+ 	</select>
+  	
+  	<!-- 根据姓名查询 -->
+  	<select id="queryBystuName" parameterType="String" resultType="Student">
+  		select * from student where stuName=#{stuName}
+  	</select>
+  	
+  	<!-- 删除学生 -->
+  	<delete id="deleteBystuId" parameterType="String">
+  		delete from student where stuId=#{stuId}
+  	</delete>
+  	
+ 	<!-- 增加学生 -->
+ 	<insert id="addStudent" parameterType="Student" >
+ 		insert  into student(stuId,stuName,stuAge,stuSex,homeAddress,className) values (#{stuId},#{stuName},#{stuAge},#{stuSex},#{homeAddress},#{className})
+ 	</insert>
+ 	
+ 	<!-- 修改页面 -->
+ 	<update id="alterStudent" parameterType="Student">
+ 		update student set stuName=#{stuName},stuAge=#{stuAge},stuSex=#{stuSex},homeAddress=#{homeAddress},className=#{className} where stuId=#{stuId}
+ 	</update>
+ 	
+ 	<!-- 查询全部学号 -->
+ 	<select id="queryStuId" resultType="String">
+ 		select stuId from student
+ 	</select>
+ </mapper>

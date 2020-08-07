@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- 接口名字 -->
+ <mapper namespace="mapper.LoginMapper">
+ 	<!-- 登陆 -->
+ 	<select id="selectusers" resultType="int" parameterType="Login">
+ 		select count(*) from login where name=#{name} and password=#{password}
+ 	</select>
+ 	
+ 	<!-- 注册 -->
+ 	<insert id="addusers" parameterType="Login">
+ 		insert into login(name,password) values(#{name},#{password})
+ 	</insert>
+ </mapper>
